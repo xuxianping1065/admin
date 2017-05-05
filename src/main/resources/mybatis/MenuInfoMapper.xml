@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.framework.admin.mapper.MenuInfoMapper" >
+	<resultMap id="BaseResultMap" type="com.framework.admin.model.MenuInfo" >
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="icon" property="icon" jdbcType="VARCHAR" />
+		<result column="position" property="position" jdbcType="INTEGER" />
+		<result column="platform" property="platform" jdbcType="VARCHAR" />
+		<result column="level" property="level" jdbcType="INTEGER" />
+		<result column="parent_id" property="parentId" jdbcType="INTEGER" />
+		<result column="display" property="display" jdbcType="VARCHAR" />
+		<result column="creater_id" property="createrId" jdbcType="INTEGER" />
+		<result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="updater_id" property="updaterId" jdbcType="INTEGER" />
+		<result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+		<result column="flag" property="flag" jdbcType="TIMESTAMP" />
+		<result column="state" property="state" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List" >
+		id,
+		name,
+		code,
+		type,
+		url,
+		icon,
+		position,
+		platform,
+		level,
+		parent_id,
+		display,
+		creater_id,
+		create_date,
+		updater_id,
+		update_date,
+		flag,
+		state
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+		select <include refid="Base_Column_List" />
+		from uc_menu_info
+		where id =  #{id,jdbcType=INTEGER}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+		delete from uc_menu_info
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.framework.admin.model.MenuInfo" >
+		<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into uc_menu_info (
+						name,
+						code,
+						type,
+						url,
+						icon,
+						position,
+						platform,
+						level,
+						parent_id,
+						display,
+						creater_id,
+						create_date,
+						updater_id,
+						update_date,
+						flag,
+						state
+			)
+		values (
+						#{name,jdbcType=VARCHAR},
+						#{code,jdbcType=VARCHAR},
+						#{type,jdbcType=VARCHAR},
+						#{url,jdbcType=VARCHAR},
+						#{icon,jdbcType=VARCHAR},
+						#{position,jdbcType=INTEGER},
+						#{platform,jdbcType=VARCHAR},
+						#{level,jdbcType=INTEGER},
+						#{parentId,jdbcType=INTEGER},
+						#{display,jdbcType=VARCHAR},
+						#{createrId,jdbcType=INTEGER},
+						#{createDate,jdbcType=TIMESTAMP},
+						#{updaterId,jdbcType=INTEGER},
+						#{updateDate,jdbcType=TIMESTAMP},
+						#{flag,jdbcType=TIMESTAMP},
+						#{state,jdbcType=VARCHAR}
+			)
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.framework.admin.model.MenuInfo" >
+		<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into uc_menu_info
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="name != null" >
+				name,
+			</if>
+			<if test="code != null" >
+				code,
+			</if>
+			<if test="type != null" >
+				type,
+			</if>
+			<if test="url != null" >
+				url,
+			</if>
+			<if test="icon != null" >
+				icon,
+			</if>
+			<if test="position != null" >
+				position,
+			</if>
+			<if test="platform != null" >
+				platform,
+			</if>
+			<if test="level != null" >
+				level,
+			</if>
+			<if test="parentId != null" >
+				parent_id,
+			</if>
+			<if test="display != null" >
+				display,
+			</if>
+			<if test="createrId != null" >
+				creater_id,
+			</if>
+			<if test="createDate != null" >
+				create_date,
+			</if>
+			<if test="updaterId != null" >
+				updater_id,
+			</if>
+			<if test="updateDate != null" >
+				update_date,
+			</if>
+			<if test="flag != null" >
+				flag,
+			</if>
+			<if test="state != null" >
+				state,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="name != null" >
+			#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="code != null" >
+			#{code,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null" >
+			#{type,jdbcType=VARCHAR},
+			</if>
+			<if test="url != null" >
+			#{url,jdbcType=VARCHAR},
+			</if>
+			<if test="icon != null" >
+			#{icon,jdbcType=VARCHAR},
+			</if>
+			<if test="position != null" >
+			#{position,jdbcType=INTEGER},
+			</if>
+			<if test="platform != null" >
+			#{platform,jdbcType=VARCHAR},
+			</if>
+			<if test="level != null" >
+			#{level,jdbcType=INTEGER},
+			</if>
+			<if test="parentId != null" >
+			#{parentId,jdbcType=INTEGER},
+			</if>
+			<if test="display != null" >
+			#{display,jdbcType=VARCHAR},
+			</if>
+			<if test="createrId != null" >
+			#{createrId,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null" >
+			#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updaterId != null" >
+			#{updaterId,jdbcType=INTEGER},
+			</if>
+			<if test="updateDate != null" >
+			#{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="flag != null" >
+			#{flag,jdbcType=TIMESTAMP},
+			</if>
+			<if test="state != null" >
+			#{state,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.framework.admin.model.MenuInfo" >
+		update uc_menu_info
+		<set>
+			<if test="name != null" >
+			name=#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="code != null" >
+			code=#{code,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null" >
+			type=#{type,jdbcType=VARCHAR},
+			</if>
+			<if test="url != null" >
+			url=#{url,jdbcType=VARCHAR},
+			</if>
+			<if test="icon != null" >
+			icon=#{icon,jdbcType=VARCHAR},
+			</if>
+			<if test="position != null" >
+			position=#{position,jdbcType=INTEGER},
+			</if>
+			<if test="platform != null" >
+			platform=#{platform,jdbcType=VARCHAR},
+			</if>
+			<if test="level != null" >
+			level=#{level,jdbcType=INTEGER},
+			</if>
+			<if test="parentId != null" >
+			parent_id=#{parentId,jdbcType=INTEGER},
+			</if>
+			<if test="display != null" >
+			display=#{display,jdbcType=VARCHAR},
+			</if>
+			<if test="createrId != null" >
+			creater_id=#{createrId,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null" >
+			create_date=#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updaterId != null" >
+			updater_id=#{updaterId,jdbcType=INTEGER},
+			</if>
+			<if test="updateDate != null" >
+			update_date=#{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="flag != null" >
+			flag=#{flag,jdbcType=TIMESTAMP},
+			</if>
+			<if test="state != null" >
+			state=#{state,jdbcType=VARCHAR}
+			</if>
+		</set>
+		where id =  #{id,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.framework.admin.model.MenuInfo" >
+		update uc_menu_info
+		set 
+
+			<if test="name != null" >
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+
+			<if test="code != null" >
+				code = #{code,jdbcType=VARCHAR},
+			</if>
+
+			<if test="type != null" >
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+
+			<if test="url != null" >
+				url = #{url,jdbcType=VARCHAR},
+			</if>
+
+			<if test="icon != null" >
+				icon = #{icon,jdbcType=VARCHAR},
+			</if>
+
+			<if test="position != null" >
+				position = #{position,jdbcType=INTEGER},
+			</if>
+
+			<if test="platform != null" >
+				platform = #{platform,jdbcType=VARCHAR},
+			</if>
+
+			<if test="level != null" >
+				level = #{level,jdbcType=INTEGER},
+			</if>
+
+			<if test="parentId != null" >
+				parent_id = #{parentId,jdbcType=INTEGER},
+			</if>
+
+			<if test="display != null" >
+				display = #{display,jdbcType=VARCHAR},
+			</if>
+
+			<if test="createrId != null" >
+				creater_id = #{createrId,jdbcType=INTEGER},
+			</if>
+
+			<if test="createDate != null" >
+				create_date = #{createDate,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="updaterId != null" >
+				updater_id = #{updaterId,jdbcType=INTEGER},
+			</if>
+
+			<if test="updateDate != null" >
+				update_date = #{updateDate,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="flag != null" >
+				flag = #{flag,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="state != null" >
+				state = #{state,jdbcType=VARCHAR}
+			</if>
+			where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

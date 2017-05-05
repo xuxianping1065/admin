@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.framework.admin.mapper.UserInfoMapper" >
+	<resultMap id="BaseResultMap" type="com.framework.admin.model.UserInfo" >
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="nickname" property="nickname" jdbcType="VARCHAR" />
+		<result column="realname" property="realname" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="salt" property="salt" jdbcType="VARCHAR" />
+		<result column="mobile" property="mobile" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="is_original_password" property="isOriginalPassword" jdbcType="VARCHAR" />
+		<result column="password_way" property="passwordWay" jdbcType="VARCHAR" />
+		<result column="login_error_num" property="loginErrorNum" jdbcType="INTEGER" />
+		<result column="login_error_date" property="loginErrorDate" jdbcType="TIMESTAMP" />
+		<result column="icon_path" property="iconPath" jdbcType="VARCHAR" />
+		<result column="one_type" property="oneType" jdbcType="VARCHAR" />
+		<result column="two_ype" property="twoYpe" jdbcType="VARCHAR" />
+		<result column="one_source" property="oneSource" jdbcType="VARCHAR" />
+		<result column="two_source" property="twoSource" jdbcType="VARCHAR" />
+		<result column="register_time" property="registerTime" jdbcType="TIMESTAMP" />
+		<result column="register_ip" property="registerIp" jdbcType="VARCHAR" />
+		<result column="register_client" property="registerClient" jdbcType="VARCHAR" />
+		<result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+		<result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR" />
+		<result column="security_password" property="securityPassword" jdbcType="VARCHAR" />
+		<result column="security_salt" property="securitySalt" jdbcType="VARCHAR" />
+		<result column="security_password_way" property="securityPasswordWay" jdbcType="VARCHAR" />
+		<result column="security_password_error_num" property="securityPasswordErrorNum" jdbcType="INTEGER" />
+		<result column="security_password_error_date" property="securityPasswordErrorDate" jdbcType="TIMESTAMP" />
+		<result column="card_type" property="cardType" jdbcType="VARCHAR" />
+		<result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="birthday" property="birthday" jdbcType="VARCHAR" />
+		<result column="longitude" property="longitude" jdbcType="NUMERIC" />
+		<result column="latitude" property="latitude" jdbcType="NUMERIC" />
+		<result column="mobile_No" property="mobileNo" jdbcType="VARCHAR" />
+		<result column="referrer" property="referrer" jdbcType="INTEGER" />
+		<result column="referral_code" property="referralCode" jdbcType="VARCHAR" />
+		<result column="service_auth" property="serviceAuth" jdbcType="VARCHAR" />
+		<result column="creater_id" property="createrId" jdbcType="INTEGER" />
+		<result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="updater_id" property="updaterId" jdbcType="INTEGER" />
+		<result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+		<result column="flag" property="flag" jdbcType="TIMESTAMP" />
+		<result column="state" property="state" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List" >
+		id,
+		username,
+		nickname,
+		realname,
+		password,
+		salt,
+		mobile,
+		email,
+		is_original_password,
+		password_way,
+		login_error_num,
+		login_error_date,
+		icon_path,
+		one_type,
+		two_ype,
+		one_source,
+		two_source,
+		register_time,
+		register_ip,
+		register_client,
+		last_login_time,
+		last_login_ip,
+		security_password,
+		security_salt,
+		security_password_way,
+		security_password_error_num,
+		security_password_error_date,
+		card_type,
+		card_no,
+		sex,
+		birthday,
+		longitude,
+		latitude,
+		mobile_No,
+		referrer,
+		referral_code,
+		service_auth,
+		creater_id,
+		create_date,
+		updater_id,
+		update_date,
+		flag,
+		state
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+		select <include refid="Base_Column_List" />
+		from uc_user_info
+		where id =  #{id,jdbcType=INTEGER}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+		delete from uc_user_info
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.framework.admin.model.UserInfo" >
+		<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into uc_user_info (
+						username,
+						nickname,
+						realname,
+						password,
+						salt,
+						mobile,
+						email,
+						is_original_password,
+						password_way,
+						login_error_num,
+						login_error_date,
+						icon_path,
+						one_type,
+						two_ype,
+						one_source,
+						two_source,
+						register_time,
+						register_ip,
+						register_client,
+						last_login_time,
+						last_login_ip,
+						security_password,
+						security_salt,
+						security_password_way,
+						security_password_error_num,
+						security_password_error_date,
+						card_type,
+						card_no,
+						sex,
+						birthday,
+						longitude,
+						latitude,
+						mobile_No,
+						referrer,
+						referral_code,
+						service_auth,
+						creater_id,
+						create_date,
+						updater_id,
+						update_date,
+						flag,
+						state
+			)
+		values (
+						#{username,jdbcType=VARCHAR},
+						#{nickname,jdbcType=VARCHAR},
+						#{realname,jdbcType=VARCHAR},
+						#{password,jdbcType=VARCHAR},
+						#{salt,jdbcType=VARCHAR},
+						#{mobile,jdbcType=VARCHAR},
+						#{email,jdbcType=VARCHAR},
+						#{isOriginalPassword,jdbcType=VARCHAR},
+						#{passwordWay,jdbcType=VARCHAR},
+						#{loginErrorNum,jdbcType=INTEGER},
+						#{loginErrorDate,jdbcType=TIMESTAMP},
+						#{iconPath,jdbcType=VARCHAR},
+						#{oneType,jdbcType=VARCHAR},
+						#{twoYpe,jdbcType=VARCHAR},
+						#{oneSource,jdbcType=VARCHAR},
+						#{twoSource,jdbcType=VARCHAR},
+						#{registerTime,jdbcType=TIMESTAMP},
+						#{registerIp,jdbcType=VARCHAR},
+						#{registerClient,jdbcType=VARCHAR},
+						#{lastLoginTime,jdbcType=TIMESTAMP},
+						#{lastLoginIp,jdbcType=VARCHAR},
+						#{securityPassword,jdbcType=VARCHAR},
+						#{securitySalt,jdbcType=VARCHAR},
+						#{securityPasswordWay,jdbcType=VARCHAR},
+						#{securityPasswordErrorNum,jdbcType=INTEGER},
+						#{securityPasswordErrorDate,jdbcType=TIMESTAMP},
+						#{cardType,jdbcType=VARCHAR},
+						#{cardNo,jdbcType=VARCHAR},
+						#{sex,jdbcType=VARCHAR},
+						#{birthday,jdbcType=VARCHAR},
+						#{longitude,jdbcType=NUMERIC},
+						#{latitude,jdbcType=NUMERIC},
+						#{mobileNo,jdbcType=VARCHAR},
+						#{referrer,jdbcType=INTEGER},
+						#{referralCode,jdbcType=VARCHAR},
+						#{serviceAuth,jdbcType=VARCHAR},
+						#{createrId,jdbcType=INTEGER},
+						#{createDate,jdbcType=TIMESTAMP},
+						#{updaterId,jdbcType=INTEGER},
+						#{updateDate,jdbcType=TIMESTAMP},
+						#{flag,jdbcType=TIMESTAMP},
+						#{state,jdbcType=VARCHAR}
+			)
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.framework.admin.model.UserInfo" >
+		<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into uc_user_info
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="username != null" >
+				username,
+			</if>
+			<if test="nickname != null" >
+				nickname,
+			</if>
+			<if test="realname != null" >
+				realname,
+			</if>
+			<if test="password != null" >
+				password,
+			</if>
+			<if test="salt != null" >
+				salt,
+			</if>
+			<if test="mobile != null" >
+				mobile,
+			</if>
+			<if test="email != null" >
+				email,
+			</if>
+			<if test="isOriginalPassword != null" >
+				is_original_password,
+			</if>
+			<if test="passwordWay != null" >
+				password_way,
+			</if>
+			<if test="loginErrorNum != null" >
+				login_error_num,
+			</if>
+			<if test="loginErrorDate != null" >
+				login_error_date,
+			</if>
+			<if test="iconPath != null" >
+				icon_path,
+			</if>
+			<if test="oneType != null" >
+				one_type,
+			</if>
+			<if test="twoYpe != null" >
+				two_ype,
+			</if>
+			<if test="oneSource != null" >
+				one_source,
+			</if>
+			<if test="twoSource != null" >
+				two_source,
+			</if>
+			<if test="registerTime != null" >
+				register_time,
+			</if>
+			<if test="registerIp != null" >
+				register_ip,
+			</if>
+			<if test="registerClient != null" >
+				register_client,
+			</if>
+			<if test="lastLoginTime != null" >
+				last_login_time,
+			</if>
+			<if test="lastLoginIp != null" >
+				last_login_ip,
+			</if>
+			<if test="securityPassword != null" >
+				security_password,
+			</if>
+			<if test="securitySalt != null" >
+				security_salt,
+			</if>
+			<if test="securityPasswordWay != null" >
+				security_password_way,
+			</if>
+			<if test="securityPasswordErrorNum != null" >
+				security_password_error_num,
+			</if>
+			<if test="securityPasswordErrorDate != null" >
+				security_password_error_date,
+			</if>
+			<if test="cardType != null" >
+				card_type,
+			</if>
+			<if test="cardNo != null" >
+				card_no,
+			</if>
+			<if test="sex != null" >
+				sex,
+			</if>
+			<if test="birthday != null" >
+				birthday,
+			</if>
+			<if test="longitude != null" >
+				longitude,
+			</if>
+			<if test="latitude != null" >
+				latitude,
+			</if>
+			<if test="mobileNo != null" >
+				mobile_No,
+			</if>
+			<if test="referrer != null" >
+				referrer,
+			</if>
+			<if test="referralCode != null" >
+				referral_code,
+			</if>
+			<if test="serviceAuth != null" >
+				service_auth,
+			</if>
+			<if test="createrId != null" >
+				creater_id,
+			</if>
+			<if test="createDate != null" >
+				create_date,
+			</if>
+			<if test="updaterId != null" >
+				updater_id,
+			</if>
+			<if test="updateDate != null" >
+				update_date,
+			</if>
+			<if test="flag != null" >
+				flag,
+			</if>
+			<if test="state != null" >
+				state,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="username != null" >
+			#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="nickname != null" >
+			#{nickname,jdbcType=VARCHAR},
+			</if>
+			<if test="realname != null" >
+			#{realname,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null" >
+			#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="salt != null" >
+			#{salt,jdbcType=VARCHAR},
+			</if>
+			<if test="mobile != null" >
+			#{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null" >
+			#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="isOriginalPassword != null" >
+			#{isOriginalPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="passwordWay != null" >
+			#{passwordWay,jdbcType=VARCHAR},
+			</if>
+			<if test="loginErrorNum != null" >
+			#{loginErrorNum,jdbcType=INTEGER},
+			</if>
+			<if test="loginErrorDate != null" >
+			#{loginErrorDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="iconPath != null" >
+			#{iconPath,jdbcType=VARCHAR},
+			</if>
+			<if test="oneType != null" >
+			#{oneType,jdbcType=VARCHAR},
+			</if>
+			<if test="twoYpe != null" >
+			#{twoYpe,jdbcType=VARCHAR},
+			</if>
+			<if test="oneSource != null" >
+			#{oneSource,jdbcType=VARCHAR},
+			</if>
+			<if test="twoSource != null" >
+			#{twoSource,jdbcType=VARCHAR},
+			</if>
+			<if test="registerTime != null" >
+			#{registerTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="registerIp != null" >
+			#{registerIp,jdbcType=VARCHAR},
+			</if>
+			<if test="registerClient != null" >
+			#{registerClient,jdbcType=VARCHAR},
+			</if>
+			<if test="lastLoginTime != null" >
+			#{lastLoginTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastLoginIp != null" >
+			#{lastLoginIp,jdbcType=VARCHAR},
+			</if>
+			<if test="securityPassword != null" >
+			#{securityPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="securitySalt != null" >
+			#{securitySalt,jdbcType=VARCHAR},
+			</if>
+			<if test="securityPasswordWay != null" >
+			#{securityPasswordWay,jdbcType=VARCHAR},
+			</if>
+			<if test="securityPasswordErrorNum != null" >
+			#{securityPasswordErrorNum,jdbcType=INTEGER},
+			</if>
+			<if test="securityPasswordErrorDate != null" >
+			#{securityPasswordErrorDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cardType != null" >
+			#{cardType,jdbcType=VARCHAR},
+			</if>
+			<if test="cardNo != null" >
+			#{cardNo,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null" >
+			#{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null" >
+			#{birthday,jdbcType=VARCHAR},
+			</if>
+			<if test="longitude != null" >
+			#{longitude,jdbcType=NUMERIC},
+			</if>
+			<if test="latitude != null" >
+			#{latitude,jdbcType=NUMERIC},
+			</if>
+			<if test="mobileNo != null" >
+			#{mobileNo,jdbcType=VARCHAR},
+			</if>
+			<if test="referrer != null" >
+			#{referrer,jdbcType=INTEGER},
+			</if>
+			<if test="referralCode != null" >
+			#{referralCode,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceAuth != null" >
+			#{serviceAuth,jdbcType=VARCHAR},
+			</if>
+			<if test="createrId != null" >
+			#{createrId,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null" >
+			#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updaterId != null" >
+			#{updaterId,jdbcType=INTEGER},
+			</if>
+			<if test="updateDate != null" >
+			#{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="flag != null" >
+			#{flag,jdbcType=TIMESTAMP},
+			</if>
+			<if test="state != null" >
+			#{state,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.framework.admin.model.UserInfo" >
+		update uc_user_info
+		<set>
+			<if test="username != null" >
+			username=#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="nickname != null" >
+			nickname=#{nickname,jdbcType=VARCHAR},
+			</if>
+			<if test="realname != null" >
+			realname=#{realname,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null" >
+			password=#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="salt != null" >
+			salt=#{salt,jdbcType=VARCHAR},
+			</if>
+			<if test="mobile != null" >
+			mobile=#{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null" >
+			email=#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="isOriginalPassword != null" >
+			is_original_password=#{isOriginalPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="passwordWay != null" >
+			password_way=#{passwordWay,jdbcType=VARCHAR},
+			</if>
+			<if test="loginErrorNum != null" >
+			login_error_num=#{loginErrorNum,jdbcType=INTEGER},
+			</if>
+			<if test="loginErrorDate != null" >
+			login_error_date=#{loginErrorDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="iconPath != null" >
+			icon_path=#{iconPath,jdbcType=VARCHAR},
+			</if>
+			<if test="oneType != null" >
+			one_type=#{oneType,jdbcType=VARCHAR},
+			</if>
+			<if test="twoYpe != null" >
+			two_ype=#{twoYpe,jdbcType=VARCHAR},
+			</if>
+			<if test="oneSource != null" >
+			one_source=#{oneSource,jdbcType=VARCHAR},
+			</if>
+			<if test="twoSource != null" >
+			two_source=#{twoSource,jdbcType=VARCHAR},
+			</if>
+			<if test="registerTime != null" >
+			register_time=#{registerTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="registerIp != null" >
+			register_ip=#{registerIp,jdbcType=VARCHAR},
+			</if>
+			<if test="registerClient != null" >
+			register_client=#{registerClient,jdbcType=VARCHAR},
+			</if>
+			<if test="lastLoginTime != null" >
+			last_login_time=#{lastLoginTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastLoginIp != null" >
+			last_login_ip=#{lastLoginIp,jdbcType=VARCHAR},
+			</if>
+			<if test="securityPassword != null" >
+			security_password=#{securityPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="securitySalt != null" >
+			security_salt=#{securitySalt,jdbcType=VARCHAR},
+			</if>
+			<if test="securityPasswordWay != null" >
+			security_password_way=#{securityPasswordWay,jdbcType=VARCHAR},
+			</if>
+			<if test="securityPasswordErrorNum != null" >
+			security_password_error_num=#{securityPasswordErrorNum,jdbcType=INTEGER},
+			</if>
+			<if test="securityPasswordErrorDate != null" >
+			security_password_error_date=#{securityPasswordErrorDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="cardType != null" >
+			card_type=#{cardType,jdbcType=VARCHAR},
+			</if>
+			<if test="cardNo != null" >
+			card_no=#{cardNo,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null" >
+			sex=#{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null" >
+			birthday=#{birthday,jdbcType=VARCHAR},
+			</if>
+			<if test="longitude != null" >
+			longitude=#{longitude,jdbcType=NUMERIC},
+			</if>
+			<if test="latitude != null" >
+			latitude=#{latitude,jdbcType=NUMERIC},
+			</if>
+			<if test="mobileNo != null" >
+			mobile_No=#{mobileNo,jdbcType=VARCHAR},
+			</if>
+			<if test="referrer != null" >
+			referrer=#{referrer,jdbcType=INTEGER},
+			</if>
+			<if test="referralCode != null" >
+			referral_code=#{referralCode,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceAuth != null" >
+			service_auth=#{serviceAuth,jdbcType=VARCHAR},
+			</if>
+			<if test="createrId != null" >
+			creater_id=#{createrId,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null" >
+			create_date=#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updaterId != null" >
+			updater_id=#{updaterId,jdbcType=INTEGER},
+			</if>
+			<if test="updateDate != null" >
+			update_date=#{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="flag != null" >
+			flag=#{flag,jdbcType=TIMESTAMP},
+			</if>
+			<if test="state != null" >
+			state=#{state,jdbcType=VARCHAR}
+			</if>
+		</set>
+		where id =  #{id,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.framework.admin.model.UserInfo" >
+		update uc_user_info
+		set 
+
+			<if test="username != null" >
+				username = #{username,jdbcType=VARCHAR},
+			</if>
+
+			<if test="nickname != null" >
+				nickname = #{nickname,jdbcType=VARCHAR},
+			</if>
+
+			<if test="realname != null" >
+				realname = #{realname,jdbcType=VARCHAR},
+			</if>
+
+			<if test="password != null" >
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+
+			<if test="salt != null" >
+				salt = #{salt,jdbcType=VARCHAR},
+			</if>
+
+			<if test="mobile != null" >
+				mobile = #{mobile,jdbcType=VARCHAR},
+			</if>
+
+			<if test="email != null" >
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+
+			<if test="isOriginalPassword != null" >
+				is_original_password = #{isOriginalPassword,jdbcType=VARCHAR},
+			</if>
+
+			<if test="passwordWay != null" >
+				password_way = #{passwordWay,jdbcType=VARCHAR},
+			</if>
+
+			<if test="loginErrorNum != null" >
+				login_error_num = #{loginErrorNum,jdbcType=INTEGER},
+			</if>
+
+			<if test="loginErrorDate != null" >
+				login_error_date = #{loginErrorDate,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="iconPath != null" >
+				icon_path = #{iconPath,jdbcType=VARCHAR},
+			</if>
+
+			<if test="oneType != null" >
+				one_type = #{oneType,jdbcType=VARCHAR},
+			</if>
+
+			<if test="twoYpe != null" >
+				two_ype = #{twoYpe,jdbcType=VARCHAR},
+			</if>
+
+			<if test="oneSource != null" >
+				one_source = #{oneSource,jdbcType=VARCHAR},
+			</if>
+
+			<if test="twoSource != null" >
+				two_source = #{twoSource,jdbcType=VARCHAR},
+			</if>
+
+			<if test="registerTime != null" >
+				register_time = #{registerTime,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="registerIp != null" >
+				register_ip = #{registerIp,jdbcType=VARCHAR},
+			</if>
+
+			<if test="registerClient != null" >
+				register_client = #{registerClient,jdbcType=VARCHAR},
+			</if>
+
+			<if test="lastLoginTime != null" >
+				last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="lastLoginIp != null" >
+				last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+			</if>
+
+			<if test="securityPassword != null" >
+				security_password = #{securityPassword,jdbcType=VARCHAR},
+			</if>
+
+			<if test="securitySalt != null" >
+				security_salt = #{securitySalt,jdbcType=VARCHAR},
+			</if>
+
+			<if test="securityPasswordWay != null" >
+				security_password_way = #{securityPasswordWay,jdbcType=VARCHAR},
+			</if>
+
+			<if test="securityPasswordErrorNum != null" >
+				security_password_error_num = #{securityPasswordErrorNum,jdbcType=INTEGER},
+			</if>
+
+			<if test="securityPasswordErrorDate != null" >
+				security_password_error_date = #{securityPasswordErrorDate,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="cardType != null" >
+				card_type = #{cardType,jdbcType=VARCHAR},
+			</if>
+
+			<if test="cardNo != null" >
+				card_no = #{cardNo,jdbcType=VARCHAR},
+			</if>
+
+			<if test="sex != null" >
+				sex = #{sex,jdbcType=VARCHAR},
+			</if>
+
+			<if test="birthday != null" >
+				birthday = #{birthday,jdbcType=VARCHAR},
+			</if>
+
+			<if test="longitude != null" >
+				longitude = #{longitude,jdbcType=NUMERIC},
+			</if>
+
+			<if test="latitude != null" >
+				latitude = #{latitude,jdbcType=NUMERIC},
+			</if>
+
+			<if test="mobileNo != null" >
+				mobile_No = #{mobileNo,jdbcType=VARCHAR},
+			</if>
+
+			<if test="referrer != null" >
+				referrer = #{referrer,jdbcType=INTEGER},
+			</if>
+
+			<if test="referralCode != null" >
+				referral_code = #{referralCode,jdbcType=VARCHAR},
+			</if>
+
+			<if test="serviceAuth != null" >
+				service_auth = #{serviceAuth,jdbcType=VARCHAR},
+			</if>
+
+			<if test="createrId != null" >
+				creater_id = #{createrId,jdbcType=INTEGER},
+			</if>
+
+			<if test="createDate != null" >
+				create_date = #{createDate,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="updaterId != null" >
+				updater_id = #{updaterId,jdbcType=INTEGER},
+			</if>
+
+			<if test="updateDate != null" >
+				update_date = #{updateDate,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="flag != null" >
+				flag = #{flag,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="state != null" >
+				state = #{state,jdbcType=VARCHAR}
+			</if>
+			where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

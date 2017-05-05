@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.framework.admin.mapper.RoleInfoMapper" >
+	<resultMap id="BaseResultMap" type="com.framework.admin.model.RoleInfo" >
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="display" property="display" jdbcType="VARCHAR" />
+		<result column="platform" property="platform" jdbcType="VARCHAR" />
+		<result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+		<result column="creater_id" property="createrId" jdbcType="INTEGER" />
+		<result column="updater_id" property="updaterId" jdbcType="INTEGER" />
+		<result column="flag" property="flag" jdbcType="TIMESTAMP" />
+		<result column="state" property="state" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List" >
+		id,
+		name,
+		code,
+		description,
+		display,
+		platform,
+		create_date,
+		update_date,
+		creater_id,
+		updater_id,
+		flag,
+		state
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+		select <include refid="Base_Column_List" />
+		from uc_role_info
+		where id =  #{id,jdbcType=INTEGER}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+		delete from uc_role_info
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.framework.admin.model.RoleInfo" >
+		<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into uc_role_info (
+						name,
+						code,
+						description,
+						display,
+						platform,
+						create_date,
+						update_date,
+						creater_id,
+						updater_id,
+						flag,
+						state
+			)
+		values (
+						#{name,jdbcType=VARCHAR},
+						#{code,jdbcType=VARCHAR},
+						#{description,jdbcType=VARCHAR},
+						#{display,jdbcType=VARCHAR},
+						#{platform,jdbcType=VARCHAR},
+						#{createDate,jdbcType=TIMESTAMP},
+						#{updateDate,jdbcType=TIMESTAMP},
+						#{createrId,jdbcType=INTEGER},
+						#{updaterId,jdbcType=INTEGER},
+						#{flag,jdbcType=TIMESTAMP},
+						#{state,jdbcType=VARCHAR}
+			)
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.framework.admin.model.RoleInfo" >
+		<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into uc_role_info
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="name != null" >
+				name,
+			</if>
+			<if test="code != null" >
+				code,
+			</if>
+			<if test="description != null" >
+				description,
+			</if>
+			<if test="display != null" >
+				display,
+			</if>
+			<if test="platform != null" >
+				platform,
+			</if>
+			<if test="createDate != null" >
+				create_date,
+			</if>
+			<if test="updateDate != null" >
+				update_date,
+			</if>
+			<if test="createrId != null" >
+				creater_id,
+			</if>
+			<if test="updaterId != null" >
+				updater_id,
+			</if>
+			<if test="flag != null" >
+				flag,
+			</if>
+			<if test="state != null" >
+				state,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="name != null" >
+			#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="code != null" >
+			#{code,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null" >
+			#{description,jdbcType=VARCHAR},
+			</if>
+			<if test="display != null" >
+			#{display,jdbcType=VARCHAR},
+			</if>
+			<if test="platform != null" >
+			#{platform,jdbcType=VARCHAR},
+			</if>
+			<if test="createDate != null" >
+			#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDate != null" >
+			#{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createrId != null" >
+			#{createrId,jdbcType=INTEGER},
+			</if>
+			<if test="updaterId != null" >
+			#{updaterId,jdbcType=INTEGER},
+			</if>
+			<if test="flag != null" >
+			#{flag,jdbcType=TIMESTAMP},
+			</if>
+			<if test="state != null" >
+			#{state,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.framework.admin.model.RoleInfo" >
+		update uc_role_info
+		<set>
+			<if test="name != null" >
+			name=#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="code != null" >
+			code=#{code,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null" >
+			description=#{description,jdbcType=VARCHAR},
+			</if>
+			<if test="display != null" >
+			display=#{display,jdbcType=VARCHAR},
+			</if>
+			<if test="platform != null" >
+			platform=#{platform,jdbcType=VARCHAR},
+			</if>
+			<if test="createDate != null" >
+			create_date=#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDate != null" >
+			update_date=#{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createrId != null" >
+			creater_id=#{createrId,jdbcType=INTEGER},
+			</if>
+			<if test="updaterId != null" >
+			updater_id=#{updaterId,jdbcType=INTEGER},
+			</if>
+			<if test="flag != null" >
+			flag=#{flag,jdbcType=TIMESTAMP},
+			</if>
+			<if test="state != null" >
+			state=#{state,jdbcType=VARCHAR}
+			</if>
+		</set>
+		where id =  #{id,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.framework.admin.model.RoleInfo" >
+		update uc_role_info
+		set 
+
+			<if test="name != null" >
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+
+			<if test="code != null" >
+				code = #{code,jdbcType=VARCHAR},
+			</if>
+
+			<if test="description != null" >
+				description = #{description,jdbcType=VARCHAR},
+			</if>
+
+			<if test="display != null" >
+				display = #{display,jdbcType=VARCHAR},
+			</if>
+
+			<if test="platform != null" >
+				platform = #{platform,jdbcType=VARCHAR},
+			</if>
+
+			<if test="createDate != null" >
+				create_date = #{createDate,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="updateDate != null" >
+				update_date = #{updateDate,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="createrId != null" >
+				creater_id = #{createrId,jdbcType=INTEGER},
+			</if>
+
+			<if test="updaterId != null" >
+				updater_id = #{updaterId,jdbcType=INTEGER},
+			</if>
+
+			<if test="flag != null" >
+				flag = #{flag,jdbcType=TIMESTAMP},
+			</if>
+
+			<if test="state != null" >
+				state = #{state,jdbcType=VARCHAR}
+			</if>
+			where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>
